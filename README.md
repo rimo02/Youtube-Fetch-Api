@@ -29,19 +29,11 @@ This project is a Golang-based server designed to interact with the YouTube API.
    ```bash
    curl -X Get -H "Content-Type: application/json" http://localhost:3000/api/set_api?key=<ADD_YOUR_API_KEY>
    ```
-<<<<<<< HEAD
    ![](assets/add_api.png)
-=======
-   /assets/add_api.png
->>>>>>> 1a37eec46d87adfad5fb840130bbb2e8cd53a416
 2. Search Videos
    ```bash
    curl -X Get -H "Content-Type: application/json" http://localhost:3000/get_videos?page=1
    ```
-<<<<<<< HEAD
    ![](assets/get_videos.png)
 3. Database
    ![](assets/database.png)
-=======
-   /assets/get_videos.png
->>>>>>> 1a37eec46d87adfad5fb840130bbb2e8cd53a416
