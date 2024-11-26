@@ -2,12 +2,12 @@ package controllers
 
 import (
 	"context"
-	"log"
-	"time"
 	"github.com/rimo02/youtube-api-server/src/config"
 	"github.com/rimo02/youtube-api-server/src/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
+	"time"
 )
 
 // get videos from the database in a paginated format

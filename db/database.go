@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"fmt"
+	"github.com/joho/godotenv"
 	"github.com/rimo02/youtube-api-server/src/api"
 	"github.com/rimo02/youtube-api-server/src/controllers"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -10,19 +11,15 @@ import (
 	"log"
 	"os"
 	"time"
-	"github.com/joho/godotenv"
 )
 
 var (
 	Client *mongo.Client
 )
 
-
 func connectDB() *mongo.Client {
-	err := godotenv.Load()
-	fmt.Printf("YES\n")
+	godotenv.Load()
 	var uri = os.Getenv("MONGO_URI")
-	fmt.Println(uri)
 	clientOptions := options.Client().ApplyURI(uri)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)

@@ -7,6 +7,5 @@ type Searchapi struct {
 	ChannelId   string `json:"ChannelId"`
 	ChannelName string `json:"ChannelName"`
 	PublishedAt string `json:"PublishedAt"`
+	Etag        string `json:"Etag"`
 }
-
-

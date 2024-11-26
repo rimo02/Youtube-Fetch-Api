@@ -37,7 +37,6 @@ func InitConfig() {
 	flag.IntVar(&config.LimitPerPage, "PER_PAGE_LIMIT", 10, "limit of videos per page")
 
 	config.Etag = ""
-	config.Etag = ""
 	flag.Parse()
 }
 

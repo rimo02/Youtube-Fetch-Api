@@ -61,10 +61,28 @@ func IsKeyValid(key string) bool {
 		return false
 	}
 	call := service.Search.List([]string{"id"}).Q("google")
-	_, err1 := call.Do()
+	response, err1 := call.Do()
 	if err1 != nil {
 		log.Printf("Invalid API key: %v\n", err1)
 		return false
+	}
+	if response != nil {
+		quotaRemaining := response.Header.Get("X-Quota-Remaining")
+		if quotaRemaining == "0" {
+			go func() {
+				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+				defer cancel() // Ensure cancel is called to release resources
+				_, err := collection.UpdateOne(
+					ctx,
+					bson.M{"key": key},
+					bson.M{"$set": bson.M{"expired": true}},
+				)
+				if err != nil {
+					log.Printf("Error updating API key status: %v", err)
+				}
+			}()
+			return false
+		}
 	}
 	return true
 }
