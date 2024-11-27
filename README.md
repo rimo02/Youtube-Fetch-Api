@@ -24,6 +24,15 @@ This project is a Golang-based server designed to interact with the YouTube API.
   - **Bulk Updates**: Ensures optimized database operations by performing updates in bulk for changed records.
 
 
+### Run the code
+1. Get your youtube api from Google cloud console
+2. Clone this repository
+3. Change the environment variables in `.env` as per your need
+4. Run this code
+   ```bash
+   docker-compose up --build
+   ```
+
 ### Examples
 1. Add Api
    ```bash
@@ -32,7 +41,7 @@ This project is a Golang-based server designed to interact with the YouTube API.
    ![](assets/add_api.png)
 2. Search Videos
    ```bash
-   curl -X Get -H "Content-Type: application/json" http://localhost:3000/get_videos?page=1
+   curl -X Get -H "Content-Type: application/json" http://localhost:3000/api/get_videos?page=1
    ```
    ![](assets/get_videos.png)
 3. Database
