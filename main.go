@@ -18,10 +18,11 @@ func init() {
 }
 
 func main() {
-	// start a goroutine to fetch videos from youtube periodically
-	app := fiber.New()
 
+	app := fiber.New()
 	done := make(chan struct{})
+	
+	// start a goroutine to fetch videos from youtube periodically
 	go func() {
 		ticker := time.NewTicker(15 * time.Minute)
 		for {
@@ -29,6 +30,7 @@ func main() {
 			case <-ticker.C:
 				ctx := app.AcquireCtx(&fasthttp.RequestCtx{})
 				err := controllers.FetchNewVideos(ctx)
+				app.ReleaseCtx(ctx)
 				if err != nil {
 					log.Errorf("Error fetching videos and updating database %v", err)
 					return
@@ -48,6 +50,7 @@ func main() {
 			case <-ticker.C:
 				ctx := app.AcquireCtx(&fasthttp.RequestCtx{})
 				api.DeleteExpiredApiKeys(ctx)
+				app.ReleaseCtx(ctx)
 			case <-done:
 				log.Info("Stopping expired API key deleter goroutine...")
 				return
