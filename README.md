@@ -2,7 +2,6 @@
 
 This project is a Golang-based server designed to interact with the YouTube API. It fetches video data periodically, stores it in a database asynchronously, and provides an endpoint to retrieve stored videos in a paginated format.
 
----
 
 ## Features
 
@@ -18,7 +17,6 @@ This project is a Golang-based server designed to interact with the YouTube API.
    - Set YouTube API key for fetching video data.
    - Fetch paginated video data from the database.
 
----
 ## Optimization
   - **Etag Header**: Utilizes Etag headers from YouTube API responses to efficiently detect and update only modified video records.
   - **Bulk Updates**: Ensures optimized database operations by performing updates in bulk for changed records.
@@ -32,6 +30,7 @@ This project is a Golang-based server designed to interact with the YouTube API.
    ```bash
    docker-compose up --build
    ```
+5. Follow the examples given below to run the code
 
 ### Examples
 1. Add Api
