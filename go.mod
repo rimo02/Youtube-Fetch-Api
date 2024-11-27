@@ -1,6 +1,6 @@
 module github.com/rimo02/youtube-api-server
 
-go 1.22.1
+go 1.23.2
 
 require (
 	github.com/gofiber/fiber/v2 v2.52.4
